@@ -1,0 +1,22 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React Storybook",
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": false,
+    "declarationMap": false,
+    "incremental": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "target": "ESNext",
+    "paths": {
+      "@acme/react-ui": ["../../packages/react-ui/src/index"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["dist", "build", "../node_modules"],
+}

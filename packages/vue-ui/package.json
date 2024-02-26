@@ -1,0 +1,38 @@
+{
+  "name": "@acme/vue-ui",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sourceMap": true,
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "vue-tsc && vite build",
+    "dev": "vue-tsc && vite build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vue/cli-service": "^5.0.8",
+    "eslint": "^8.57.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.7.3",
+    "vue": "^3.4.20",
+    "tsup": "^8.0.2",
+    "vue-tsc": "^1.8.27"
+  }
+}
