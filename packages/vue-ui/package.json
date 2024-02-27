@@ -7,20 +7,20 @@
   "types": "./dist/index.d.ts",
   "sourceMap": true,
   "sideEffects": false,
+  "files": [
+    "dist/**"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     }
   },
-  "files": [
-    "dist/**"
-  ],
   "scripts": {
     "build": "vue-tsc && vite build",
     "dev": "vue-tsc && vite build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@acme/react-ui";
 
 const meta: Meta<typeof Button> = {
+  title: 'Atoms/Button',
   component: Button,
   argTypes: {
     type: {
@@ -36,7 +37,8 @@ export const Primary: Story = {
   args: {
     children: "Hello",
     type: "button",
-    style: { backgroundColor: "red", 
+    style: {
+      backgroundColor: "red",
       color: "white",
       borderRadius: "5px"
     },

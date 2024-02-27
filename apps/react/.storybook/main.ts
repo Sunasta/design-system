@@ -1,35 +1,30 @@
 import { resolve } from "path";
-import type { StorybookConfig } from '@storybook/react-vite';
+import tsconfigPaths from "vite-tsconfig-paths";
+import type { StorybookConfig } from "@storybook/react-vite";
 import { mergeConfig } from "vite";
 
-const config: StorybookConfig  = {
+const config: StorybookConfig = {
+  framework: "@storybook/react-vite",
   stories: ["../stories/*.stories.tsx", "../stories/**/*.stories.tsx"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
   ],
-  framework: "@storybook/react-vite",
-  async viteFinal(config, { configType }) {
-    if (configType === 'DEVELOPMENT') {
-      // Your development configuration goes here
-    }
-    if (configType === 'PRODUCTION') {
-      // Your production configuration goes here.
-    }
+  async viteFinal(config) {
     return mergeConfig(config, {
-      define: { "process.env": {} },
+      plugins: [tsconfigPaths()],
       resolve: {
-        alias: [
-          {
-            find: "react-ui",
-            replacement: resolve(__dirname, "../../../packages/react-ui/"),
-          },
-        ],
+        alias: {
+          "react-ui": resolve(
+            __dirname,
+            "../../../packages/react-ui/",
+            "tsconfig.json"
+          ),
+        },
       },
     });
   },
-
   docs: {
     autodocs: true,
   },
