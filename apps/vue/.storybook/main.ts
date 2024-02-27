@@ -1,31 +1,27 @@
 import { resolve } from "path";
-import type { StorybookConfig } from '@storybook/vue3-vite';
+import tsconfigPaths from "vite-tsconfig-paths";
+import type { StorybookConfig } from "@storybook/vue3-vite";
 import { mergeConfig } from "vite";
 
-const config: StorybookConfig  = {
+const config: StorybookConfig = {
+  framework: "@storybook/vue3-vite",
   stories: ["../stories/*.stories.tsx", "../stories/**/*.stories.tsx"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-docs"
+    "@storybook/addon-docs",
   ],
-  framework: "@storybook/vue3-vite",
-  async viteFinal(config, { configType }) {
-    if (configType === 'DEVELOPMENT') {
-      // Your development configuration goes here
-    }
-    if (configType === 'PRODUCTION') {
-      // Your production configuration goes here.
-    }
+  async viteFinal(config) {
     return mergeConfig(config, {
-      define: { "process.env": {} },
+      plugins: [tsconfigPaths()],
       resolve: {
-        alias: [
-          {
-            find: "vue-ui",
-            replacement: resolve(__dirname, "../../../packages/vue-ui/"),
-          },
-        ],
+        alias: {
+          "vue-ui": resolve(
+            __dirname,
+            "../../../packages/vue-ui/",
+            "tsconfig.json"
+          ),
+        },
       },
     });
   },
