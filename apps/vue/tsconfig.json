@@ -8,6 +8,9 @@
     "strict": true,
     "jsx": "preserve",
     "esModuleInterop": true,
+    "paths": {
+      "@acme/vue-ui": ["../../packages/vue-ui/src/index"]
+    }
   },
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]

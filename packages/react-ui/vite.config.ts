@@ -1,12 +1,13 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
+import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
 
+// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    react(),
     dts({
       rollupTypes: true,
     }),
@@ -17,16 +18,19 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: "./dist",
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "VueUI",
+      entry: resolve(__dirname, "src/index.tsx"),
+      name: "react-ui",
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ["react", "react-dom", "tailwindcss"],
       output: {
         globals: {
-          vue: "Vue",
+          react: "React",
+          "react-dom": "ReactDOM",
+          tailwindcss: "tailwindcss",
         },
       },
     },

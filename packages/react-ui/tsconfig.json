@@ -3,11 +3,17 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "React Library",
   "compilerOptions": {
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "lib": ["dom", "ES2020"],
     "module": "ESNext",
-    "target": "es6"
+    "target": "es6",
+    "paths": {
+      "@repo/tailwind-config": ["node_modules/@repo/tailwind-config/*"],
+      "tailwind-config": ["./tailwind.config.ts"]
+    }
   },
   "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["vite.config.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

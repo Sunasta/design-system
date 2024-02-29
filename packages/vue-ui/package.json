@@ -1,38 +1,28 @@
 {
-  "name": "@acme/vue-ui",
-  "version": "0.0.0",
-  "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "sourceMap": true,
-  "sideEffects": false,
-  "files": [
-    "dist/**"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "scripts": {
-    "build": "vue-tsc && vite build",
-    "dev": "vue-tsc && vite build",
-    "lint": "vue-cli-service lint",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
-  },
-  "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "@vue/cli-service": "^5.0.8",
-    "eslint": "^8.57.0",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
-    "vite-plugin-dts": "^3.7.3",
-    "vue": "^3.4.20",
-    "tsup": "^8.0.2",
-    "vue-tsc": "^1.8.27"
-  }
+	"name": "@acme/vue-ui",
+	"version": "0.0.0",
+	"license": "MIT",
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite build --watch",
+		"lint": "eslint . --max-warnings 0",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+	},
+	"dependencies": {
+		"vue": "^3.4.20"
+	},
+	"devDependencies": {
+		"@repo/eslint-config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
+		"@repo/tailwind-config": "workspace:*",
+		"@vitejs/plugin-vue": "^5.0.4",
+		"@types/node": "^20.11.22",
+		"vite-plugin-dts": "^3.7.3",
+		"eslint": "^8.57.0",
+		"postcss": "^8.4.35",
+		"autoprefixer": "^10.4.17",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5.3.3",
+		"vite": "^5.1.4"
+	}
 }

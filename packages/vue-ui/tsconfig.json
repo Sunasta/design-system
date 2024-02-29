@@ -17,10 +17,11 @@
     "composite": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite-env.d.ts"]
+  "include": ["src", "vue-env.d.ts"],
+  "exclude": ["vite.config.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
