@@ -38,9 +38,7 @@ export const Primary: Story = {
     children: "Hello",
     type: "button",
     style: {
-      backgroundColor: "red",
-      color: "white",
-      borderRadius: "5px"
+      color: "black",
     },
   },
 };
