@@ -9,7 +9,7 @@ export default meta;
 export const Welcome: StoryObj = {
   render: () => {
     const title = document.createElement('h1');
-    title.innerText = 'Hello Button';
+    title.innerText = 'Welcome to Storybook!';
     return title;
   }
 };

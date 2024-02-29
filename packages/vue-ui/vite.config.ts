@@ -1,6 +1,7 @@
 import { resolve } from "path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import tailwindcss from "tailwindcss";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
@@ -10,26 +11,32 @@ export default defineConfig({
       rollupTypes: true,
     }),
   ],
+  css: {
+    postcss: {
+      plugins: [tailwindcss],
+    },
+  },
   build: {
     lib: {
-      // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, "src/index.ts"),
-      name: "VueUI",
-      // the proper extensions will be added
-      fileName: "index",
-      formats: ["es"],
+      name: "vue-ui",
+      fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ["vue"],
+      external: ["vue", "tailwindcss"],
       output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
         globals: {
           vue: "Vue",
+          tailwindcss: "tailwindcss"
         },
       },
+    },
+    sourcemap: true,
+    emptyOutDir: true,
+  },
+  resolve: {
+    alias: {
+      "tailwind-config": resolve(__dirname, "./tailwind.config.ts"),
     },
   },
 });

@@ -18,7 +18,6 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "./dist",
     lib: {
       entry: path.resolve(__dirname, "src/index.tsx"),
       name: "react-ui",

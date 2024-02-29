@@ -1,14 +1,17 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Vue Storybook",
-  "extends": ["@repo/typescript-config/base.json"],
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "strict": true,
-    "jsx": "preserve",
-    "esModuleInterop": true,
-  },
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"display": "Vue Storybook",
+	"extends": ["@repo/typescript-config/base.json"],
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"strict": true,
+		"jsx": "preserve",
+		"esModuleInterop": true,
+		"paths": {
+			"@acme/vue-ui": ["../../packages/vue-ui/src/index"]
+		}
+	},
+	"include": ["."],
+	"exclude": ["dist", "build", "node_modules"]
 }
