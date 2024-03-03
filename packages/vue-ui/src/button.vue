@@ -1,34 +1,24 @@
-<template>
-  <button
-    type="button"
-    class="px-4 py-20"
-    :class="classes"
-    @click="onClick"
-    :style="style"
-  >
-    {{ label }}
-  </button>
-</template>
-
 <script setup lang="ts">
-import { computed } from "vue";
+import cn from "@repo/tailwind-config/utils";
+import { buttonVariants } from "@repo/tailwind-config/componentsDictionary";
 
-// Define props with TypeScript support
-const props = defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  primary: {
-    type: Boolean,
-    default: false,
-  },
-  size: {
-    type: String,
-    validator: (value: string) => ["small", "medium", "large"].includes(value),
-  },
-  backgroundColor: {
-    type: String,
-  },
+interface ButtonProps {
+  variant?: NonNullable<Parameters<typeof buttonVariants>[0]>["variant"];
+  size?: NonNullable<Parameters<typeof buttonVariants>[0]>["size"];
+  rounded?: NonNullable<Parameters<typeof buttonVariants>[0]>["rounded"];
+  as?: string;
+}
+
+withDefaults(defineProps<ButtonProps>(), {
+  as: "button",
 });
 </script>
+
+<template>
+  <component
+    :is="as"
+    :class="cn(buttonVariants({ variant, size, rounded }), $attrs.class ?? '')"
+  >
+    <slot />
+  </component>
+</template>

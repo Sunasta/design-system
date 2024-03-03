@@ -1,3 +1,3 @@
 import "./index.css";
 
-export { Button, type ButtonProps } from "./button";
+export { Button, buttonVariants } from "./button";
